@@ -1,10 +1,16 @@
 import React from "react";
+import Modal from "../common/Modal/Modal";
 
-const ImageGallery = () => {
+const ImageGallery = ({ images, onClickModal }) => {
   return (
     <div>
-      <ul class="gallery">
-        <li></li>
+      <ul className="gallery">
+        {images.map(({ webformatURL, id, largeImageURL }) => (
+          <li key={id}>
+            <img src={webformatURL} alt="Foto" onClick={onClickModal} />
+            <Modal largeImageURL={largeImageURL} />
+          </li>
+        ))}
       </ul>
     </div>
   );
