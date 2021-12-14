@@ -7,8 +7,11 @@ const ImageGallery = ({ images, onClickModal }) => {
       <ul className="gallery">
         {images.map(({ webformatURL, id, largeImageURL }) => (
           <li key={id}>
-            <img src={webformatURL} alt="Foto" onClick={onClickModal} />
-            <Modal largeImageURL={largeImageURL} />
+            <img
+              src={webformatURL}
+              alt="Foto"
+              onClick={() => onClickModal(largeImageURL)}
+            />
           </li>
         ))}
       </ul>

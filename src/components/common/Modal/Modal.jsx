@@ -4,10 +4,6 @@ import { createPortal } from "react-dom";
 const modalRootRef = document.querySelector("#modal-root");
 
 class Modal extends Component {
-  state = {
-    isModalOpen: false,
-  };
-
   componentDidMount() {
     window.addEventListener("keydown", this.handleEsc);
   }
@@ -18,12 +14,8 @@ class Modal extends Component {
 
   handleEsc = (e) => {
     if (e.code === "Escape") {
-      this.onClosesModal();
+      this.props.onClosesModal();
     }
-  };
-
-  onClosesModal = () => {
-    this.setState({ isModalOpen: false });
   };
 
   handleBackdropClick = (e) => {
