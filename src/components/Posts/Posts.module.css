@@ -35,6 +35,7 @@
   background-color: lawngreen;
   border-radius: 20%;
   box-shadow: 3px 3px 3px 2px rgba(34, 60, 80, 0.8);
+  cursor: pointer;
 }
 .icon:hover {
   box-shadow: 1px 1px 1px 1px rgba(34, 60, 80, 0.4);

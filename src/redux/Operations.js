@@ -31,7 +31,7 @@ const editProducts = createAsyncThunk(
   async (editProducts, thunkAPI) => {
     try {
       const data = await editItem(END_POINT, editProducts);
-      console.log(`data`, data);
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue("Something wrong :(");

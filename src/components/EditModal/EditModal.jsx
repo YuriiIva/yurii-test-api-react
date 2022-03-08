@@ -1,13 +1,18 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { editProducts } from "../../redux/Operations";
 
 const EditModal = ({ editProduct, onCloseForm }) => {
-  const [oldProd, setOldProd] = useState({ ...editProduct });
+  const [oldProd, setOldProd] = useState({});
   const [activeProduct, setActiveProduct] = useState(null);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!editProduct) return;
+    setOldProd({ ...editProduct });
+  }, [editProduct]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,6 +27,7 @@ const EditModal = ({ editProduct, onCloseForm }) => {
     e.preventDefault();
     setActiveProduct(oldProd);
   };
+
   useEffect(() => {
     if (!activeProduct) return;
 

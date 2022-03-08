@@ -7,7 +7,6 @@ import Posts from "../Posts/Posts";
 import ModalChange from "../ModalChange/ModalChange";
 import EditModal from "../EditModal/EditModal";
 import { getProducts, deleteProducts } from "../../redux/Operations";
-// import { Container, Row, Col, Form, Input, Button } from "react-bootstrap";
 
 const App = () => {
   const posts = useSelector((state) => state.products.posts);
