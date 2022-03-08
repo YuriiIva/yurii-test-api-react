@@ -1,20 +1,23 @@
 {
   "files": {
-    "main.css": "/goit-react-hw-04-hooks-images/static/css/main.07e85e6b.chunk.css",
-    "main.js": "/goit-react-hw-04-hooks-images/static/js/main.39b9d0fb.chunk.js",
-    "main.js.map": "/goit-react-hw-04-hooks-images/static/js/main.39b9d0fb.chunk.js.map",
-    "runtime-main.js": "/goit-react-hw-04-hooks-images/static/js/runtime-main.debaf196.js",
-    "runtime-main.js.map": "/goit-react-hw-04-hooks-images/static/js/runtime-main.debaf196.js.map",
-    "static/js/2.ba98089e.chunk.js": "/goit-react-hw-04-hooks-images/static/js/2.ba98089e.chunk.js",
-    "static/js/2.ba98089e.chunk.js.map": "/goit-react-hw-04-hooks-images/static/js/2.ba98089e.chunk.js.map",
-    "index.html": "/goit-react-hw-04-hooks-images/index.html",
-    "static/css/main.07e85e6b.chunk.css.map": "/goit-react-hw-04-hooks-images/static/css/main.07e85e6b.chunk.css.map",
-    "static/js/2.ba98089e.chunk.js.LICENSE.txt": "/goit-react-hw-04-hooks-images/static/js/2.ba98089e.chunk.js.LICENSE.txt"
+    "main.css": "/yurii-test-api-react/static/css/main.b772939b.chunk.css",
+    "main.js": "/yurii-test-api-react/static/js/main.5dbf623e.chunk.js",
+    "main.js.map": "/yurii-test-api-react/static/js/main.5dbf623e.chunk.js.map",
+    "runtime-main.js": "/yurii-test-api-react/static/js/runtime-main.64c8929f.js",
+    "runtime-main.js.map": "/yurii-test-api-react/static/js/runtime-main.64c8929f.js.map",
+    "static/css/2.0a9ec390.chunk.css": "/yurii-test-api-react/static/css/2.0a9ec390.chunk.css",
+    "static/js/2.a533de9c.chunk.js": "/yurii-test-api-react/static/js/2.a533de9c.chunk.js",
+    "static/js/2.a533de9c.chunk.js.map": "/yurii-test-api-react/static/js/2.a533de9c.chunk.js.map",
+    "index.html": "/yurii-test-api-react/index.html",
+    "static/css/2.0a9ec390.chunk.css.map": "/yurii-test-api-react/static/css/2.0a9ec390.chunk.css.map",
+    "static/css/main.b772939b.chunk.css.map": "/yurii-test-api-react/static/css/main.b772939b.chunk.css.map",
+    "static/js/2.a533de9c.chunk.js.LICENSE.txt": "/yurii-test-api-react/static/js/2.a533de9c.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.debaf196.js",
-    "static/js/2.ba98089e.chunk.js",
-    "static/css/main.07e85e6b.chunk.css",
-    "static/js/main.39b9d0fb.chunk.js"
+    "static/js/runtime-main.64c8929f.js",
+    "static/css/2.0a9ec390.chunk.css",
+    "static/js/2.a533de9c.chunk.js",
+    "static/css/main.b772939b.chunk.css",
+    "static/js/main.5dbf623e.chunk.js"
   ]
 }
