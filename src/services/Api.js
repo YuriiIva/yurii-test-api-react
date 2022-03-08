@@ -1,11 +1,11 @@
-const BASE_URL = "https://yourtestapi.com/api/posts";
+const BASE_URL = "https://yourtestapi.com/api";
 
-const fetchData = async (options = {}) => {
-  const res = await fetch(`${BASE_URL}`, options);
+const fetchData = async (path, options = {}) => {
+  const res = await fetch(`${BASE_URL}/${path}`, options);
   return res.ok ? res.json() : Promise.reject(new Error(res.statusText));
 };
 
-const getData = (options) => fetchData(options);
+const getData = (endpoint, options) => fetchData(endpoint, options);
 
 const saveItem = (endpoint, item, options = {}) => {
   const finalOptions = {
@@ -29,6 +29,7 @@ const editItem = (endpoint, item, options = {}) => {
     },
     ...options,
   };
+
   return fetchData(`${endpoint}/${item.id}`, finalOptions);
 };
 

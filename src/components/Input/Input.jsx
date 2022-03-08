@@ -1,51 +1,126 @@
 import React from "react";
+import { useState, useEffect } from "react";
 
-const Input = () => {
+import { nanoid } from "nanoid";
+
+import { saveItem } from "../../services/Api";
+
+const END_POINT = "posts";
+
+const Input = ({ onCloseForm, onNewProduct }) => {
+  const [newProduct, setNewProduct] = useState(null);
+  const [formData, setFormData] = useState({});
+
+  useEffect(() => {
+    if (!newProduct) return;
+    const addNewProduct = async () => {
+      const newProducts = await saveItem(END_POINT, newProduct);
+      console.log(`newProducts`, newProducts);
+      onNewProduct(newProducts);
+      onCloseForm();
+    };
+    addNewProduct();
+  }, [newProduct]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData({
+      ...formData,
+      [name]: value,
+      id: nanoid(),
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setNewProduct(formData);
+    // reset();
+  };
+
+  // const reset = () => {
+  //   setFormData(null);
+  // };
+  // console.log(`newProduct`, newProduct);
+  // console.log(`formData`, formData);
+
   return (
-    <div class="container">
+    <div className="container">
       <h2>Please, enter the date</h2>
 
-      <form action="/action_page.php">
-        <div class="form-group">
-          <label for="title">Title:</label>
+      <form action="/action_page.php" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="title">Title:</label>
           <input
+            value={formData.title}
+            onChange={handleChange}
             type="text"
-            class="form-control"
+            className="form-control"
             id="title"
             name="title"
           ></input>
         </div>
 
-        <div class="form-group">
-          <label for="txt">Text:</label>
-          <input type="text" class="form-control" id="txt" name="text"></input>
-        </div>
-
-        <div class="form-group">
-          <label for="img">Img:</label>
-          <input type="url" class="form-control" id="img" name="img"></input>
-        </div>
-
-        <div class="form-group">
-          <label for="url">Url:</label>
-          <input type="url" class="form-control" id="url" name="url"></input>
-        </div>
-
-        <div class="form-group">
-          <label for="act">Active:</label>
-          <input type="number" class="form-control" id="act" name="act"></input>
-        </div>
-
-        <div class="form-group">
-          <label for="sort">Sort:</label>
+        <div className="form-group">
+          <label htmlFor="txt">Text:</label>
           <input
-            type="number"
-            class="form-control"
-            id="sort"
-            name="sort"
+            value={formData.text}
+            onChange={handleChange}
+            type="text"
+            className="form-control"
+            id="txt"
+            name="text"
           ></input>
         </div>
-        <button type="submit" class="btn btn-primary">
+
+        <div className="form-group">
+          <label htmlFor="image">Img:</label>
+          <input
+            value={formData.image}
+            onChange={handleChange}
+            type="url"
+            className="form-control"
+            id="image"
+            name="image"
+          ></input>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="url">Url:</label>
+          <input
+            value={formData.url}
+            onChange={handleChange}
+            type="url"
+            className="form-control"
+            id="url"
+            name="url"
+          ></input>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="act">Active:</label>
+          <input
+            value={formData.active}
+            onChange={handleChange}
+            type="number"
+            className="form-control"
+            id="act"
+            name="active"
+          ></input>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="sort">Sort:</label>
+          <input
+            value={formData.sort_order}
+            onChange={handleChange}
+            type="number"
+            className="form-control"
+            id="sort"
+            name="sort_order"
+          ></input>
+        </div>
+        <button type="submit" className="btn btn-primary">
           Save
         </button>
       </form>
