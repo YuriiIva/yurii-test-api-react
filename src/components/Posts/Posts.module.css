@@ -1,0 +1,45 @@
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.title {
+  margin-right: 10px;
+}
+
+.mainItem {
+  position: relative;
+  height: 480px;
+  width: 380px;
+
+  padding: 15px;
+  margin: 30px;
+
+  border-radius: 10%;
+  border-radius: 1px solid tomato;
+
+  background-color: rgb(139, 156, 161);
+  box-shadow: 0 0 5px 5px rgba(16, 2, 49, 0.4);
+}
+.maimItem:hover {
+  box-shadow: 01px 1px 1px 0 rgba(0, 0, 0, 0.4);
+}
+.icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border-radius: 2px solid tomato;
+  width: 20px;
+  background-color: lawngreen;
+  border-radius: 20%;
+  box-shadow: 3px 3px 3px 2px rgba(34, 60, 80, 0.8);
+}
+.icon:hover {
+  box-shadow: 1px 1px 1px 1px rgba(34, 60, 80, 0.4);
+}
+.link {
+  display: block;
+  text-align: center;
+}

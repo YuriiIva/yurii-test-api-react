@@ -1,15 +1,19 @@
-const Button = ({ hendleOnClick }) => {
+import React from "react";
+import { Button } from "react-bootstrap";
+
+const Button1 = ({ children }) => {
   return (
     <div>
-      <button
-        type="button "
-        onClick={hendleOnClick}
-        className="button load-btn"
+      <Button
+        type="button"
+        class="btn btn-primary"
+        data-toggle="modal"
+        data-target="#myModal"
       >
-        Load more
-      </button>
+        {children}
+      </Button>
     </div>
   );
 };
 
-export default Button;
+export default Button1;

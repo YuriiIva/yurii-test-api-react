@@ -1,35 +1,48 @@
-import { createPortal } from "react-dom";
-import { useEffect } from "react";
+import React from "react";
 
-const modalRootRef = document.querySelector("#modal-root");
+import s from "./Modal.module.css";
+import { useState, useEffect } from "react";
 
-const Modal = ({ onClosesModal, largeImageURL }) => {
+const Modal = ({ onCloseForm, children }) => {
   useEffect(() => {
-    const handleEsc = (e) => {
+    const onEscPress = (e) => {
       if (e.code === "Escape") {
-        onClosesModal();
+        onCloseForm();
       }
     };
 
-    window.addEventListener("keydown", handleEsc);
+    window.addEventListener("keydown", onEscPress);
     return () => {
-      window.removeEventListener("keydown", handleEsc);
+      window.removeEventListener("keydown", onEscPress);
     };
-  }, [onClosesModal]);
+  }, [onCloseForm]);
 
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
-      onClosesModal();
+      onCloseForm();
     }
   };
 
-  return createPortal(
-    <div className="overlay" onClick={handleBackdropClick}>
-      <div className="modal">
-        <img src={largeImageURL} alt="" onClick={onClosesModal} />
+  return (
+    <div>
+      <div className={s.backdrop} onClick={handleBackdropClick}>
+        <div className={s.modal}>
+          <div>
+            <header className={s.header}>
+              <button
+                type="button"
+                className={s.closeBtn}
+                onClick={onCloseForm}
+                aria-label="Close"
+              >
+                &times;
+              </button>
+            </header>
+            {children}
+          </div>
+        </div>
       </div>
-    </div>,
-    modalRootRef
+    </div>
   );
 };
 
