@@ -1,26 +1,21 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 import { nanoid } from "nanoid";
 
-import { saveItem } from "../../services/Api";
+import { addProducts } from "../../redux/Operations";
 
-const END_POINT = "posts";
-
-const Input = ({ onCloseForm, onNewProduct }) => {
+const Input = ({ onCloseForm }) => {
   const [newProduct, setNewProduct] = useState(null);
   const [formData, setFormData] = useState({});
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!newProduct) return;
-    const addNewProduct = async () => {
-      const newProducts = await saveItem(END_POINT, newProduct);
-      console.log(`newProducts`, newProducts);
-      onNewProduct(newProducts);
-      onCloseForm();
-    };
-    addNewProduct();
-  }, [newProduct]);
+    dispatch(addProducts(newProduct));
+    onCloseForm();
+  }, [dispatch, newProduct]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,14 +30,9 @@ const Input = ({ onCloseForm, onNewProduct }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setNewProduct(formData);
-    // reset();
   };
 
-  // const reset = () => {
-  //   setFormData(null);
-  // };
-  // console.log(`newProduct`, newProduct);
-  // console.log(`formData`, formData);
+  const { title, text, image, url, active, sort_order } = formData;
 
   return (
     <div className="container">
@@ -52,72 +42,78 @@ const Input = ({ onCloseForm, onNewProduct }) => {
         <div className="form-group">
           <label htmlFor="title">Title:</label>
           <input
-            value={formData.title}
+            value={title}
             onChange={handleChange}
             type="text"
             className="form-control"
             id="title"
             name="title"
+            required
           ></input>
         </div>
 
         <div className="form-group">
-          <label htmlFor="txt">Text:</label>
+          <label htmlFor="text">Text:</label>
           <input
-            value={formData.text}
+            value={text}
             onChange={handleChange}
             type="text"
             className="form-control"
-            id="txt"
+            id="text"
             name="text"
+            required
           ></input>
         </div>
 
         <div className="form-group">
           <label htmlFor="image">Img:</label>
           <input
-            value={formData.image}
+            value={image}
             onChange={handleChange}
             type="url"
             className="form-control"
             id="image"
             name="image"
+            required
           ></input>
         </div>
 
         <div className="form-group">
           <label htmlFor="url">Url:</label>
           <input
-            value={formData.url}
+            value={url}
             onChange={handleChange}
             type="url"
             className="form-control"
             id="url"
             name="url"
+            required
           ></input>
         </div>
 
         <div className="form-group">
-          <label htmlFor="act">Active:</label>
+          <label htmlFor="active">Active:</label>
           <input
-            value={formData.active}
+            value={active}
             onChange={handleChange}
             type="number"
             className="form-control"
-            id="act"
+            id="active"
             name="active"
+            required
           ></input>
         </div>
 
         <div className="form-group">
           <label htmlFor="sort">Sort:</label>
           <input
-            value={formData.sort_order}
+            value={sort_order}
             onChange={handleChange}
             type="number"
             className="form-control"
             id="sort"
             name="sort_order"
+            required
           ></input>
         </div>
         <button type="submit" className="btn btn-primary">

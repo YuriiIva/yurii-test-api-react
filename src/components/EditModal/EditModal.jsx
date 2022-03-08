@@ -1,9 +1,13 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-const EditModal = ({ editProduct, editProd, onCloseForm }) => {
+import { editProducts } from "../../redux/Operations";
+
+const EditModal = ({ editProduct, onCloseForm }) => {
   const [oldProd, setOldProd] = useState({ ...editProduct });
-  // const [editProd, setEditProd] = useState("");
+  const [activeProduct, setActiveProduct] = useState(null);
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,22 +20,23 @@ const EditModal = ({ editProduct, editProd, onCloseForm }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    editProd(oldProd);
-    // setIsModalEditOpen(false);
-    setOldProd("");
-    onCloseForm();
+    setActiveProduct(oldProd);
   };
+  useEffect(() => {
+    if (!activeProduct) return;
 
-  console.log(`oldProd`, oldProd);
+    dispatch(editProducts(activeProduct));
+    onCloseForm();
+  }, [activeProduct, dispatch]);
 
   return (
     <div>
       <div className="container">
-        <h2>Please, edit data</h2>
+        <h2>You can change... </h2>
 
         <form action="/action_page.php" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="title">Title:</label>
+            <label htmlFor="title">Change title:</label>
             <input
               value={oldProd.title}
               type="text"
@@ -43,7 +48,7 @@ const EditModal = ({ editProduct, editProd, onCloseForm }) => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="txt">Text:</label>
+            <label htmlFor="txt">Change text:</label>
             <input
               value={oldProd.text}
               type="text"

@@ -1,8 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import s from "./Posts.module.css";
 import { AiOutlineBars } from "react-icons/ai";
 
-const Posts = ({ posts, handleBtnChange }) => {
+const Posts = ({ handleBtnChange }) => {
+  const posts = useSelector((state) => state.products.posts);
   return (
     <ul className={s.item}>
       {posts.map(
