@@ -51,7 +51,9 @@ const productsSlice = createSlice({
       })
       .addCase(editProducts.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.posts.map((post) => (post.id === payload.id ? payload : post));
+        console.log(`payload`, payload);
+        const indx = state.posts.findIndex((post) => post.id === payload.id);
+        state.posts[indx] = payload;
       })
       .addCase(editProducts.rejected, (state, { payload }) => {
         state.loading = false;

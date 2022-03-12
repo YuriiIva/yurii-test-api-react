@@ -59,7 +59,7 @@ const App = () => {
   return (
     <div>
       <Button1 handleChange={openForm}> Add product</Button1>
-      {posts.length && <Posts handleBtnChange={handleBtnChange} />}
+      {!!posts.length && <Posts handleBtnChange={handleBtnChange} />}
 
       {isOpenForm && (
         <Modal onCloseForm={onCloseForm}>

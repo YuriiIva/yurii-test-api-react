@@ -5,6 +5,7 @@ import { AiOutlineBars } from "react-icons/ai";
 
 const Posts = ({ handleBtnChange }) => {
   const posts = useSelector((state) => state.products.posts);
+  console.log(`posts`, posts);
   return (
     <ul className={s.item}>
       {posts.map(
