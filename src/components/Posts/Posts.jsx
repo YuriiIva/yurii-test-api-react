@@ -32,7 +32,12 @@ const Posts = ({ handleBtnChange }) => {
 
               <img src={url} alt="" width="250px" height="165px" />
 
-              <a href={image} className={s.link}>
+              <a
+                href={image}
+                className={s.link}
+                target="_blank"
+                rel="noreferrer"
+              >
                 Image link
               </a>
 
